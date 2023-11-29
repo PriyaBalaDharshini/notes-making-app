@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { addNoteToList, removeNoteFromList, updateNoteInList } from '../Slice/noteSlice';
+import { addNoteToList, removeNoteFromList, updateNoteInList, setSelectedNote } from '../Slice/noteSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Notes() {
     const dispatch = useDispatch();
 
     const [time, setTime] = useState(new Date());
-    const [title, setTitle] = useState("")
+    const [title, setTitle] = useState("");
     const [note, setNote] = useState("");
+    const [id, setId] = useState(0)
 
     useEffect(() => {
         setInterval(() => {
@@ -25,11 +26,22 @@ function Notes() {
         dispatch(removeNoteFromList(note));
     }
 
-    function updateNote(note) {
-        dispatch(updateNoteInList(note))
-    }
-
     const { noteList } = useSelector((state) => state.note);
+
+    const { selectedNote } = useSelector((state) => state.note);
+    useEffect(() => {
+        setTitle(selectedNote.title);
+        setNote(selectedNote.note);
+        setId(selectedNote.id);
+    }, [selectedNote])
+
+    function editNote(note) {
+        dispatch(setSelectedNote(note));
+
+    }
+    function updateNote(note) {
+        dispatch(updateNoteInList(note));
+    }
 
     return (
         <div>
@@ -49,7 +61,10 @@ function Notes() {
                             placeholder='Take a Note...'
                             onChange={(e) => setNote(e.target.value)}
                             value={note} />
-                        <div><button className='btn btn-outline-dark' onClick={addNote} >Add</button></div>
+                        <div>
+                            <button className='btn btn-outline-dark' onClick={addNote} >Add</button>
+
+                        </div>
 
                         <span id='time-display'><i class="fa-regular fa-clock"></i>{`${time.toLocaleTimeString()}`}</span>
                         <div className="icons-notes">
@@ -74,8 +89,10 @@ function Notes() {
                                     <h4 class="card-title">{note.title}</h4>
                                     <p class="card-text">{note.note}</p>
                                     <div className="buttons">
-                                        <button onClick={() => updateNote(note)} className='btn btn-outline-dark'><i class="fa-solid fa-pencil"></i>Edit</button>
+                                        <button onClick={() => editNote(note)} className='btn btn-outline-dark'><i class="fa-solid fa-pencil"></i>Edit</button>
                                         <button onClick={() => deleteNote(note)} className='btn btn-outline-dark'><i class="fa-regular fa-trash-can"></i>Delete</button>
+                                        <button onClick={() => updateNote(note)} className='btn btn-outline-dark'><i class="fa-regular fa-trash-can"></i>Update</button>
+
                                     </div>
                                 </div>
                             </div>))}

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     noteList: [],
-    selectedNote: {}
+    selectedNote: {},
 }
 
 const noteSlice = createSlice({
@@ -26,5 +26,5 @@ const noteSlice = createSlice({
     }
 })
 
-export const { addNoteToList, removeNoteFromList, updateNoteInList, selectedNote } = noteSlice.actions;
+export const { addNoteToList, removeNoteFromList, updateNoteInList, setSelectedNote } = noteSlice.actions;
 export default noteSlice.reducer;
