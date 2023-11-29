@@ -86,13 +86,15 @@ ul li i {
     border: none;
     background-color: #F5F5F5;
     width: 100%;
-    height: 100px;
+    height: 50px;
+    font-size: 20px;
 }
 
 #date {
     border: none;
     background-color: #F5F5F5;
     margin-top: 20px;
+    font-size: 15px;
 
 }
 
