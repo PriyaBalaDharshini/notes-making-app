@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { addNoteToList } from '../Slice/noteSlice';
+import { addNoteToList, removeNoteFromList, updateNoteInList } from '../Slice/noteSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Notes() {
@@ -17,10 +17,18 @@ function Notes() {
 
     function addNote(e) {
         e.preventDefault();
-        console.log(title);
-        console.log(note);
         dispatch(addNoteToList({ title, note }));
+        setTitle("");
+        setNote("");
     }
+    function deleteNote(note) {
+        dispatch(removeNoteFromList(note));
+    }
+
+    function updateNote(note) {
+        dispatch(updateNoteInList(note))
+    }
+
     const { noteList } = useSelector((state) => state.note);
 
     return (
@@ -66,8 +74,8 @@ function Notes() {
                                     <h4 class="card-title">{note.title}</h4>
                                     <p class="card-text">{note.note}</p>
                                     <div className="buttons">
-                                        <button className='btn btn-outline-dark'><i class="fa-solid fa-pencil"></i>Edit</button>
-                                        <button className='btn btn-outline-dark'><i class="fa-regular fa-trash-can"></i>Delete</button>
+                                        <button onClick={() => updateNote(note)} className='btn btn-outline-dark'><i class="fa-solid fa-pencil"></i>Edit</button>
+                                        <button onClick={() => deleteNote(note)} className='btn btn-outline-dark'><i class="fa-regular fa-trash-can"></i>Delete</button>
                                     </div>
                                 </div>
                             </div>))}

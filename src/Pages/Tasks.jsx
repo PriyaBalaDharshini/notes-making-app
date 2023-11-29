@@ -15,8 +15,7 @@ function Tasks() {
         setTitle("");
         setTime("");
     }
-
-    const { taskList } = useSelector((state) => state.task);
+    const { taskList } = useSelector((state) => state.task)
 
     return (
 
@@ -57,6 +56,7 @@ function Tasks() {
                                     <div>
                                         <i className="fa-regular fa-star"></i>
                                     </div>
+
                                 </li>
                             ))}
                         </ul>

@@ -15,7 +15,7 @@ const taskSlice = createSlice({
             state.taskList.push(task);
         },
         removeTaskFromList: (state, action) => {
-            state.taskList = state.taskList.fileter((task) => task.id !== action.payload.id);
+            state.taskList = state.taskList.filter((task) => task.id !== action.payload.id);
         },
         updateTaskInList: (state, action) => {
             state.taskList = state.taskList.map((task) => task.id === action.payload.id ? action.payload : task);
