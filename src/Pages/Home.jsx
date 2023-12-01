@@ -14,7 +14,7 @@ function Home() {
                 <div className="tasks-home">
 
                     <div className="note-display">
-                        <div className="notes-box" >
+                        <div className="notes-box" style={{ overflowX: 'auto', display: 'flex', gap: '5px' }}>
                             <div style={{ display: "flex" }}>
                                 {noteList && noteList.map((note, index) => (
                                     <div class="card" style={{ width: '16rem' }}>
