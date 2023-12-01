@@ -18,7 +18,7 @@ function App() {
           </div>
           <div className="col-10">
             <Routes>
-              <Route path='/Home' Component={Home} />
+              <Route path='/' Component={Home} />
               <Route path='/Search' Component={Search} />
               <Route path='/Notes' Component={Notes} />
               <Route path='/Tasks' Component={Tasks} />

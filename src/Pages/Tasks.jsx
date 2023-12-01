@@ -53,7 +53,6 @@ function Tasks() {
                     <div className="display-inside">
                         <ul className='task-list' style={{ overflowY: "auto", maxHeight: "300px" }}>
                             {taskList && taskList.map((task, index) => (
-
                                 <li className='task-items' style={{ display: 'flex', justifyContent: 'space-between', overflowY: task.length >= 4 ? "auto" : "hidden" }} key={index}>
                                     <div>
                                         <i className="fa-regular fa-circle-check"></i>
@@ -65,7 +64,6 @@ function Tasks() {
                                     <div>
                                         <i className="fa-regular fa-trash-can" onClick={() => deleteTask(task)}></i>
                                     </div>
-
                                 </li>
                             ))}
                         </ul>

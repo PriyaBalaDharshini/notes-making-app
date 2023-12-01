@@ -12,7 +12,6 @@ function Home() {
                 <h1 className='mx-5 my-5' ><b>Welcome</b></h1>
                 <h3 className='mx-5'><i class="fa-solid fa-list-check mx-3"></i><b>My Notes</b></h3>
                 <div className="tasks-home">
-
                     <div className="note-display">
                         <div className="notes-box" style={{ overflowX: 'auto', display: 'flex', gap: '5px' }}>
                             <div style={{ display: "flex" }}>
@@ -25,8 +24,6 @@ function Home() {
                                     </div>
                                 ))}
 
-
-
                             </div>
                         </div>
                     </div>
@@ -36,20 +33,21 @@ function Home() {
                 <div className="notes-home">
                     <div className="display-task">
                         <div className="display-inside">
-                            <ul className='task-list'>
+                            <ul className='task-list' style={{ overflowY: "auto", maxHeight: "300px" }}>
                                 {taskList && taskList.map((task, index) => (
-                                    <li key={index} className='task-items' style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <li className='task-items' style={{ display: 'flex', justifyContent: 'space-between', overflowY: task.length >= 4 ? "auto" : "hidden" }} key={index}>
                                         <div>
                                             <i className="fa-regular fa-circle-check"></i>
                                         </div>
                                         <div>
-                                            <h5>{task.title}</h5>
-                                            <small>{task.time}</small>
+                                            <h3> <b>{task.title}</b></h3>
+                                            <p>{task.time}</p>
                                         </div>
                                         <div>
-                                            <i className="fa-regular fa-star"></i>
+                                            <i className="fa-regular fa-trash-can"></i>
                                         </div>
-                                    </li>))}
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                     </div>

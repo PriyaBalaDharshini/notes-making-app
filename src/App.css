@@ -160,6 +160,11 @@ ul li i {
     padding: 20px;
 }
 
+.active {
+    background-color: #203562;
+    color: white;
+}
+
 /* 
 .tasks-home,
 .notes-home {
